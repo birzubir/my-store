@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import styles from "./Register.module.scss";
-import Link from "next/link";
 import { Dispatch, FormEvent, SetStateAction, useState } from "react";
 import Input from "@/components/ui/input";
 import Button from "@/components/ui/Button";
@@ -58,6 +57,7 @@ const RegisterView = ({
       title="Register"
       link="/auth/login"
       linkText="Have an account? Sign in "
+      setToaster={setToaster}
     >
       <form onSubmit={handleSubmit}>
         <Input label="Email" name="email" type="email" />
