@@ -1,5 +1,4 @@
-import AdminLayout from "@/components/layout/AdminLayout";
-import DashboardAdminView from "@/components/views/admin/Dashboard/indexx";
+import DashboardAdminView from "@/components/views/admin/Dashboard/index";
 
 const AdminPage = () => {
   return (
