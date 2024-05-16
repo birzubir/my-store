@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import styles from "./Login.module.scss";
-import Link from "next/link";
 import { Dispatch, FormEvent, SetStateAction, useState } from "react";
 import { signIn } from "next-auth/react";
 import Input from "@/components/ui/input";
@@ -13,7 +12,6 @@ const LoginView = ({
   setToaster: Dispatch<SetStateAction<{}>>;
 }) => {
   const [isLoading, setIsLoading] = useState(false);
-
   const { push, query } = useRouter();
 
   const callbackUrl: any = query.callbackUrl || "/";
@@ -34,19 +32,22 @@ const LoginView = ({
         setIsLoading(false);
         form.reset();
         push(callbackUrl);
-      } else {
-        setIsLoading(false);
-        
         setToaster({
           variant: "success",
           message: "Login Success",
+        });
+      } else {
+        setIsLoading(false);
+        setToaster({
+          variant: "danger",
+          message: "Email or password is incorrect",
         });
       }
     } catch (error) {
       setIsLoading(false);
       setToaster({
         variant: "danger",
-        message: "Login failed, please call support",
+        message: "Email or password is incorrect",
       });
     }
   };
