@@ -1,0 +1,41 @@
+.products {
+  &__table {
+    width: 100%;
+    // border-spacing: 0;
+    // border-collapse: collapse;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-top: 50px;
+    th,
+    td {
+      text-align: center;
+      padding: 8px;
+    }
+    thead {
+      tr {
+        background-color: #f2f2f2;
+      }
+    }
+
+    &__action {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      &__edit {
+        background-color: #e9d53b;
+        padding: 15px;
+        color: #000;
+        i {
+          font-size: 20px;
+        }
+      }
+      &__delete {
+        background-color: #ff6363;
+        padding: 15px;
+        i {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
