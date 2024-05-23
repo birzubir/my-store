@@ -85,7 +85,7 @@ const ModalUpdateUser = (props: Proptypes) => {
             { label: "Admin", value: "admin" },
           ]}
         />
-        <Button type="submit">{isLoading ? "Loading..." : "Update"}</Button>
+        <Button type="submit">{isLoading ? "Updating..." : "Update"}</Button>
       </form>
     </Modal>
   );
