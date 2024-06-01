@@ -16,6 +16,7 @@
         box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
         flex-direction: column;
         padding: 40px;
+
         &__title {
           margin-bottom: 20px;
         }
@@ -30,6 +31,8 @@
           justify-content: center;
           font-size: 64px;
           font-weight: bold;
+          object-fit: cover;
+          object-position: center;
         }
         &__label {
           margin-top: 20px;
@@ -62,12 +65,25 @@
         box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
         padding: 40px 40px;
         border-radius: 8px;
+        &__form {
+          &__button {
+            margin-top: 20px;
+          }
+          &__input {
+            margin: 20px 0;
+          }
+        }
       }
       &__password {
         width: 25%;
         border-radius: 8px;
         box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
         padding: 40px;
+        &__form {
+          &__input {
+            margin: 20px 0;
+          }
+        }
       }
     }
   }

@@ -4,20 +4,18 @@ import Modal from "@/components/ui/Modal";
 import Select from "@/components/ui/Select";
 import userServices from "@/services/user";
 import { User } from "@/types/user.type";
-import { useSession } from "next-auth/react";
 import { Dispatch, FormEvent, SetStateAction, useState } from "react";
+import styles from "./ModalUpadateUser.module.scss";
 
 type Proptypes = {
   updatedUser: User | any;
   setUpdatedUser: Dispatch<SetStateAction<{}>>;
   setUsersData: Dispatch<SetStateAction<User[]>>;
   setToaster: Dispatch<SetStateAction<{}>>;
-  session: any;
 };
 
 const ModalUpdateUser = (props: Proptypes) => {
-  const { updatedUser, setUpdatedUser, setUsersData, setToaster, session } =
-    props;
+  const { updatedUser, setUpdatedUser, setUsersData, setToaster } = props;
   const [isLoading, setIsLoading] = useState(false);
   const handleUpdateUser = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -27,11 +25,7 @@ const ModalUpdateUser = (props: Proptypes) => {
       role: form.role.value,
     };
 
-    const result = await userServices.updateUser(
-      updatedUser.id,
-      data,
-      session.data?.accessToken
-    );
+    const result = await userServices.updateUser(updatedUser.id, data);
     // console.log(result);
 
     if (result.status === 200) {
@@ -54,12 +48,13 @@ const ModalUpdateUser = (props: Proptypes) => {
   return (
     <Modal onClose={() => setUpdatedUser({})}>
       <h1>Update User</h1>
-      <form onSubmit={handleUpdateUser}>
+      <form onSubmit={handleUpdateUser} className={styles.form}>
         <Input
           label="Email"
           name="email"
           type="email"
           defaultValue={updatedUser.email}
+          className={styles.form__input}
           disabled
         />
         <Input
@@ -75,6 +70,7 @@ const ModalUpdateUser = (props: Proptypes) => {
           type="number"
           defaultValue={updatedUser.phone}
           disabled
+          className={styles.form__input}
         />
         <Select
           label="Role"
@@ -84,6 +80,7 @@ const ModalUpdateUser = (props: Proptypes) => {
             { label: "Member", value: "member" },
             { label: "Admin", value: "admin" },
           ]}
+          className={styles.form__input}
         />
         <Button type="submit">{isLoading ? "Updating..." : "Update"}</Button>
       </form>
