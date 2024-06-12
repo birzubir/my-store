@@ -2,19 +2,19 @@ import Button from "@/components/ui/Button";
 import Modal from "@/components/ui/Modal";
 import userServices from "@/services/user";
 import styles from "./ModalDeleteUser.module.scss";
-import { useSession } from "next-auth/react";
 import { User } from "@/types/user.type";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useContext, useState } from "react";
+import { ToasterContext } from "@/context/ToasterContext";
 
 type PropsTypes = {
   deletedUser: User | any;
   setDeletedUser: Dispatch<SetStateAction<{}>>;
   setUsersData: Dispatch<SetStateAction<User[]>>;
-  setToaster: Dispatch<SetStateAction<{}>>;
 };
 
 const ModalDeleteUser = (props: PropsTypes) => {
-  const { deletedUser, setDeletedUser, setUsersData, setToaster } = props;
+  const { deletedUser, setDeletedUser, setUsersData } = props;
+  const { setToaster } = useContext(ToasterContext);
 
   const [isLoading, setIsLoading] = useState(false);
   // console.log(session)

@@ -1,15 +1,7 @@
-import ProfileMemberView from "@/components/views/member/Profile";
-import userServices from "@/services/user";
-import { User } from "@/types/user.type";
-import { useSession } from "next-auth/react";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import ProfileMemberView from "@/components/views/Member/Profile";
 
-type Proptypes = {
-  setToaster: Dispatch<SetStateAction<{}>>;
-};
-
-const ProfilePage = ({ setToaster }: any) => {
-  return <ProfileMemberView setToaster={setToaster} />;
+const ProfilePage = () => {
+  return <ProfileMemberView />;
 };
 
 export default ProfilePage;

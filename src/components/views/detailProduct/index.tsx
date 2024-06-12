@@ -4,19 +4,20 @@ import Image from "next/image";
 import { convertIDR } from "@/utils/currency";
 import Button from "@/components/ui/Button";
 import { useSession } from "next-auth/react";
-import { Dispatch, SetStateAction, use, useState } from "react";
+import { useContext, useState } from "react";
 import { useRouter } from "next/router";
 import userServices from "@/services/user";
+import { ToasterContext } from "@/context/ToasterContext";
 
 type PropTypes = {
   product: Product | any;
   cart: any;
   productId: string | string[] | undefined;
-  setToaster: Dispatch<SetStateAction<{}>>;
 };
 
 const DetailProductView = (props: PropTypes) => {
-  const { product, cart, productId, setToaster } = props;
+  const { product, cart, productId } = props;
+  const { setToaster } = useContext(ToasterContext);
   const { status }: any = useSession();
   const router = useRouter();
   const [selectedSize, setSelectedSize] = useState("");
